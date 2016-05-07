@@ -94,15 +94,12 @@ module.exports.init = function () {
       HEAD
   */
   let dirContent = fs.readdirSync('./', 'utf8')
-  if (dirContent.indexOf('.fvs') === -1) {
-    fs.mkdirSync('./.fvs')
-    fs.mkdirSync('./.fvs/objects')
-    fs.mkdirSync('./.fvs/refs')
-    fs.mkdirSync('./.fvs/refs/master')
-    fs.mkdirSync('./.fvs/HEAD')
-  } else {
-    throw new Error('.fvs already exists')
-  }
+  if (dirContent.indexOf('.fvs') !== -1) throw new Error('.fvs already exists')
+  fs.mkdirSync('./.fvs')
+  fs.mkdirSync('./.fvs/objects')
+  fs.mkdirSync('./.fvs/refs')
+  fs.mkdirSync('./.fvs/refs/master')
+  fs.mkdirSync('./.fvs/HEAD')
 };
 
 module.exports.add = function () {
